@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RIFC Fundraising — Staff Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <header class="admin-header">
+        <div>
+          <div class="eyebrow">RHODE ISLAND FREE CLINIC</div>
+          <h1>Live Fundraising Total</h1>
+        </div>
+        <div class="private-label">STAFF PANEL<br /></div>
+      </header>
+
+      <section class="summary-card">
+        <div>
+          <label for="goalInput">Goal Amount</label>
+          <div class="goal-row">
+            <input
+              id="goalInput"
+              type="number"
+              min="1"
+              step="100"
+              value="20000"
+            />
+            <button id="saveGoal">Save Goal</button>
+            <div class="goal-lock">
+              <label class="toggle">
+                <input type="checkbox" id="lockGoal" />
+                <span class="slider"></span>
+              </label>
+
+              <span>Lock Goal</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-stat">
+          <span>Current Total</span>
+          <strong id="adminTotal">$0</strong>
+        </div>
+        <div class="summary-stat">
+          <span>Progress</span>
+          <strong id="adminPercent">0%</strong>
+          <div class="mini-progress"><div id="miniProgress"></div></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>Auction Items</h2>
+        </div>
+        <p class="instruction">
+          Click <strong>+</strong> each time someone raises their bid paddle for
+          each item. The price is fixed for each item.
+        </p>
+        <div id="items"></div>
+      </section>
+
+      <section class="bottom-summary">
+        <div><span>Total Bids</span><strong id="bidCount">0</strong></div>
+        <div><span>Total Raised</span><strong id="bottomTotal">$0</strong></div>
+      </section>
+
+      <button class="reset" id="resetCounts">↻ Reset Counts</button>
+      <p class="note">
+        Data is saved in this browser. Refreshing the browser will not reset the
+        count.
+      </p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

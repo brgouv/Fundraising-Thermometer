@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RIFC Fundraising Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  </head>
+  <body class="public-page">
+    <main class="public-shell">
+      <header class="public-header">
+        <div>
+          <div class="eyebrow">RHODE ISLAND FREE CLINIC</div>
+          <div class="tagline">Friends of The Free Clinic</div>
+        </div>
+      </header>
+
+      <section class="fundraiser">
+        <div class="eyebrow">2026 Care Auction</div>
+        <div class="display-grid">
+          <div class="thermometer-wrap">
+            <div class="thermometer-stage">
+              <div class="thermometer">
+                <div class="thermometer-fill" id="thermometerFill"></div>
+              </div>
+
+              <div class="milestones" id="milestones" aria-hidden="true"></div>
+            </div>
+
+            <div class="scale">
+              <span id="scale100"></span>
+              <span id="scale75"></span>
+              <span id="scale50"></span>
+              <span id="scale25"></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="total-area">
+            <div class="amount" id="currentTotal">$0</div>
+            <div class="raised">RAISED</div>
+            <div class="rule"></div>
+            <div class="percent" id="percent">0%</div>
+            <div class="goal-label">
+              OF <span id="goalText">$30,000</span> GOAL
+            </div>
+            <div class="thank-you">
+              Thank you for supporting<br />Rhode Island Free Clinic!
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="public-footer">
+        Every bid helps support free comprehensive medical care, preventative
+        health services, and educational opportunties for students.
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

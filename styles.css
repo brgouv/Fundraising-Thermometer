@@ -1,0 +1,664 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --blue: #1d4592;
+  --light-blue: #99dafe;
+  --mid-blue: #2aaeea;
+  --gray: #656569;
+  --light-gray: #eef5fa;
+  --white: #ffffff;
+  --green: #2d8a52;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Montserrat", Arial, sans-serif;
+  color: var(--blue);
+  background: #f3f7fa;
+}
+
+.public-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.public-shell {
+  width: 100vw;
+  height: 100vh;
+  min-height: 0;
+  background: radical-gradient(
+    circle at 50% 45%,
+    #ffffff 0%,
+    #f5fbff 45%,
+    #eaf7fd 100%
+  );
+  display: flex;
+  flex-direction: column;
+}
+
+.public-header {
+  flex: 0 0 10vh;
+  padding: 1.5vh 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(229, 240, 243, 0.98);
+  border-bottom: 2px solid #e3f2fa;
+}
+
+.eyebrow {
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  font-size: clamp(15px, 1.5vw, 24px);
+}
+
+.tagline {
+  color: var(--gray);
+  margin-top: 5px;
+  font-size: clamp(15px, 1.5vw, 24px);
+}
+
+.fundraiser {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 1vh 4vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fundraiser > .eyebrow {
+  font-size: clamp(22px, 2.4vw, 40px);
+  margin: 5px 1vh;
+  letter-spacing: 0.1em;
+}
+
+.display-grid {
+  width: 100%;
+  max-width: 1450px;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(400px, 48%) minmax(400px, 52%);
+  gap: 3vw;
+  align-items: center;
+}
+
+.thermometer-stage {
+  position: relative;
+  height: min(67vh, 650px);
+  width: clamp(250px, 22vw, 330px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thermometer-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0 3vh;
+}
+
+.thermometer {
+  position: relative;
+  width: clamp(90px, 8vw, 135px);
+  height: min(67vh, 650px);
+  border: clamp(6px, 0.55vw, 9px) solid var(--blue);
+  border-radius: 100px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(29, 69, 146, 0.12);
+}
+
+.thermometer-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(to top, var(--mid-blue), var(--light-blue));
+  transition: height 1.2s ease;
+  border-radius: 0 0 80px 80px;
+}
+
+.milestones {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.milestone {
+  position: absolute;
+  left: 50%;
+  width: clamp(190px, 17vw, 280px);
+  height: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.milestone-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*width: 100% */
+  width: 240px;
+  border-top: 3px solid var(--blue);
+  opacity: 0.5;
+  transition:
+    opacity 0.4s ease,
+    width 0.4s ease,
+    border-width 0.4s ease;
+}
+
+.milestone-label {
+  position: absolute;
+  left: calc(50% + 130px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: clamp(14px, 1.15vw, 20px);
+  font-weight: 700;
+  color: var(--blue);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 12px;
+  border-radius: 7px;
+  box-shadow: 0.2px 8px rgba(29, 69, 146, 0.08);
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Future animation state */
+
+.milestone.reached .milestone-line {
+  opacity: 1;
+  width: 270px;
+  border-width: 4px;
+}
+
+.milestone.reached .milestone-label {
+  transform: translateY(-50%) scale(1.08);
+  background: var(--light-blue);
+  box-shadow: 0 4px 14px rgba(29, 69, 146, 0.18);
+}
+
+.scale {
+  height: min(58vh, 480px);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.total-area {
+  text-align: center;
+  padding: 2vh 2vw;
+}
+.amount {
+  font-size: clamp(65px, 8vw, 125px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+}
+.raised,
+.goal-label {
+  font-size: clamp(17px, 1.6vw, 28px);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.rule {
+  height: 3px;
+  background: var(--light-blue);
+  margin: 2.5vh auto;
+  width: 65%;
+  border-radius: 3px;
+}
+.percent {
+  font-size: clamp(65px, 7vw, 110px);
+  font-weight: 800;
+  line-height: 0.95;
+}
+.thank-you {
+  margin-top: 2.5vh;
+  font-size: clamp(18px, 1.8vw, 30px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+.public-footer {
+  flex: 0 0 7vh;
+  background: var(--blue);
+  color: white;
+  padding: 1vh 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(11px, 0.9vw, 16px);
+}
+
+/* ================================
+   Donation Surge Animation
+   ================================ */
+
+.thermometer-stage.donation-surge {
+  animation: thermometerSurge 900ms ease-out;
+}
+
+@keyframes thermometerSurge {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.035);
+  }
+
+  55% {
+    transform: scale(0.995);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Brief glow around the thermometer */
+.thermometer-stage.donation-surge .thermometer {
+  animation: thermometerGlow 900ms ease-out;
+}
+
+@keyframes thermometerGlow {
+  0% {
+    box-shadow: 0 8px 25px rgba(29, 69, 146, 0.12);
+  }
+
+  35% {
+    box-shadow:
+      0 0 28px rgba(42, 174, 234, 0.55),
+      0 8px 30px rgba(29, 69, 146, 0.18);
+  }
+
+  100% {
+    box-shadow: 0 8px 25px rgba(29, 69, 146, 0.12);
+  }
+}
+
+/* Bulb gets a little pulse too */
+.thermometer-stage.donation-surge .thermometer-bulb {
+  animation: bulbPulse 900ms ease-out;
+}
+
+@keyframes bulbPulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  35% {
+    transform: translateX(-50%) scale(1.08);
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* ================================
+   Sparkles
+   ================================ */
+
+.thermometer-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: visible;
+}
+
+.thermometer-sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.thermometer-sparkle::before,
+.thermometer-sparkle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--light-blue);
+  transform: translate(-50%, -50%);
+}
+
+.thermometer-sparkle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.thermometer-sparkle {
+  animation: sparkleEnergy 900ms ease-out forwards;
+}
+
+@keyframes sparkleEnergy {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(0.8) rotate(90deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(135deg);
+  }
+}
+
+.admin-page {
+  padding: 30px;
+}
+.admin-shell {
+  max-width: 1200px;
+  margin: auto;
+}
+.admin-header {
+  background: var(--blue);
+  color: white;
+  padding: 28px 34px;
+  border-radius: 14px 14px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-header h1 {
+  margin: 8px 0 0;
+  font-size: 34px;
+}
+.private-label {
+  text-align: right;
+  font-weight: 700;
+}
+.private-label small {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.summary-card {
+  background: white;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 25px;
+  box-shadow: 0 4px 18px #0000000d;
+}
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.goal-row {
+  display: flex;
+  gap: 10px;
+}
+input {
+  width: 190px;
+  border: 1px solid #ccdce8;
+  border-radius: 8px;
+  padding: 12px;
+}
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  background: var(--blue);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+button:hover {
+  opacity: 0.9;
+}
+button.secondary {
+  background: #e6f3fb;
+  color: var(--blue);
+}
+
+.goal-lock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray);
+}
+
+.goal-lock .toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  display: inline-block;
+}
+
+.goal-lock .toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.goal-lock .slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  background: #ccc;
+  border-radius: 24px;
+  transition: 0.2s;
+}
+
+.goal-lock .slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.goal-lock .toggle input:checked + .slider {
+  background: var(--blue);
+}
+
+.goal-lock .toggle input:checked + .slider::before {
+  transform: translateX(18px);
+}
+
+.summary-stat {
+  background: #eef8fd;
+  padding: 17px;
+  border-radius: 10px;
+}
+.summary-stat span,
+.bottom-summary span {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+.summary-stat strong {
+  font-size: 28px;
+}
+.mini-progress {
+  margin-top: 12px;
+  height: 9px;
+  border-radius: 20px;
+  background: #d7e6ee;
+  overflow: hidden;
+}
+#miniProgress {
+  height: 100%;
+  width: 0;
+  background: var(--mid-blue);
+  transition: width 0.5s ease;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 12px;
+}
+.section-title h2 {
+  margin: 0;
+}
+
+.item-row {
+  background: white;
+  padding: 20px;
+  border: 1px solid #e2edf3;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr 1fr;
+  gap: 15px;
+  align-items: center;
+}
+.item-name {
+  font-weight: 700;
+}
+.item-price,
+.item-total {
+  font-weight: 700;
+}
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.stepper button {
+  width: 42px;
+  padding: 10px 0;
+}
+.quantity {
+  width: 58px;
+  text-align: center;
+  font-weight: 700;
+  padding: 10px 5px;
+}
+.bottom-summary {
+  margin-top: 18px;
+  background: #e7f4fc;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.bottom-summary strong {
+  font-size: 28px;
+}
+.reset {
+  width: 100%;
+  margin-top: 18px;
+  background: #287fbd;
+}
+.note {
+  color: var(--gray);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (min-aspect-ratio: 16/10) {
+  .display-grid {
+    grid-template-columns:
+      minmax(450px, 1fr)
+      minmax(500px, 1.05fr);
+  }
+  .thermometer {
+    height: min(68vh, 680px);
+  }
+}
+@media (min-width: 1600px) {
+  .display-grid {
+    max-width: 1550px;
+  }
+  .thermometer {
+    width: 135px;
+  }
+  .amount {
+    font-size: 125px;
+  }
+  .percent {
+    font-size: 110px;
+  }
+}
+
+@media (max-height: 700px) {
+  .public-header {
+    flex-basis: 9vh;
+  }
+  .public-footer {
+    flex-basis: 6vh;
+  }
+  .fundraiser > .eyebrow {
+    margin-bottom: 0.5vh;
+  }
+  .thermometer {
+    height: 58vh;
+  }
+  .thank-you {
+    margin-top: 1vh;
+  }
+  .scale {
+    height: 300px;
+  }
+  .summary-card,
+  .item-row {
+    grid-template-columns: 1fr;
+  }
+  .admin-page {
+    padding: 10px;
+  }
+}
+.instruction {
+  color: var(--gray);
+  margin: -4px 0 14px;
+  font-size: 14px;
+}
